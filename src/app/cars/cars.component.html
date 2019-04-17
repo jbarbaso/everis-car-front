@@ -16,32 +16,35 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let car of (cars | async)">
+    <tr
+      *ngFor="let car of (cars | async)"
+      [class.table-info]="car === selectedCar"
+    >
       <th scope="row">
-        <ngb-highlight [result]="car.id" [term]="filter.value"></ngb-highlight>
+        <ngb-highlight [result]="car.id" ></ngb-highlight>
       </th>
       <td>
         <ngb-highlight
           [result]="car.brand"
-          [term]="filter.value"
+          
         ></ngb-highlight>
       </td>
       <td>
         <ngb-highlight
           [result]="car.registration"
-          [term]="filter.value"
+          
         ></ngb-highlight>
       </td>
       <td>
         <ngb-highlight
           [result]="car.country"
-          [term]="filter.value"
+          
         ></ngb-highlight>
       </td>
       <td>
         <ul class="list-inline">
           <li class="list-inline-item">
-            <a href="#" class="btn btn-success">Edit</a>
+            <a href="#" class="btn btn-success" (click)="onSelect(car)" >Edit</a>
           </li>
           <li class="list-inline-item">
             <a href="#" class="btn btn-danger">Remove</a>
