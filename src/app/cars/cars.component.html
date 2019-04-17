@@ -1,0 +1,55 @@
+<form>
+  <div class="form-group form-inline">
+    Full text search:
+    <input class="form-control ml-2" type="text" [formControl]="filter" />
+  </div>
+</form>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Brand</th>
+      <th scope="col">Registration</th>
+      <th scope="col">Country</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let car of (cars | async)">
+      <th scope="row">
+        <ngb-highlight [result]="car.id" [term]="filter.value"></ngb-highlight>
+      </th>
+      <td>
+        <ngb-highlight
+          [result]="car.brand"
+          [term]="filter.value"
+        ></ngb-highlight>
+      </td>
+      <td>
+        <ngb-highlight
+          [result]="car.registration"
+          [term]="filter.value"
+        ></ngb-highlight>
+      </td>
+      <td>
+        <ngb-highlight
+          [result]="car.country"
+          [term]="filter.value"
+        ></ngb-highlight>
+      </td>
+      <td>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <a href="#" class="btn btn-success">Edit</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#" class="btn btn-danger">Remove</a>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<app-car-detail [car]="selectedCar"></app-car-detail>

@@ -1,0 +1,18 @@
+<div *ngIf="car?.id">
+  <h2>#{{ car.id }} Details</h2>
+  <div><span>id: </span>{{ car.id }}</div>
+  <div>
+    <label>
+      brand:
+      <input [(ngModel)]="car.brand" placeholder="brand" />
+    </label>
+    <label>
+      registration:
+      <input [(ngModel)]="car.registration" placeholder="registration" />
+    </label>
+    <label>
+      country:
+      <input [(ngModel)]="car.country" placeholder="country" />
+    </label>
+  </div>
+</div>
